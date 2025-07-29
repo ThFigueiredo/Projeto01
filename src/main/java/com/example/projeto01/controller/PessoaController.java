@@ -2,7 +2,7 @@ package com.example.projeto01.controller;
 
 
 import com.example.projeto01.DTO.PessoaRequest;
-import com.example.projeto01.model.Pessoa;
+import com.example.projeto01.DTO.PessoaResponse;
 import com.example.projeto01.service.PessoaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +21,8 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<Pessoa> salvarPessoa(@RequestBody PessoaRequest pessoaRequest) {
-        Pessoa pessoa = pessoaService.salvar(pessoaRequest);
+    public ResponseEntity<PessoaResponse> salvarPessoa(@RequestBody PessoaRequest pessoaRequest) {
+        PessoaResponse pessoa = pessoaService.salvar(pessoaRequest);
         return ResponseEntity.ok(pessoa);
     }
 }

@@ -1,11 +1,13 @@
 package com.example.projeto01.DTO;
 
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PessoaResponse {
 
     private Long id;
