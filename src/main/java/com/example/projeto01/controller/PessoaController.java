@@ -5,10 +5,9 @@ import com.example.projeto01.DTO.PessoaRequest;
 import com.example.projeto01.DTO.PessoaResponse;
 import com.example.projeto01.service.PessoaService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/pessoa")
@@ -25,6 +24,12 @@ public class PessoaController {
         PessoaResponse pessoa = pessoaService.salvar(pessoaRequest);
         return ResponseEntity.ok(pessoa);
     }
+    @PostMapping("/lista")
+    public ResponseEntity<List<PessoaResponse>> listarPessoa() {
+        List<PessoaResponse> pessoas = pessoaService.listar();
+        return ResponseEntity.ok(pessoas);
+    }
+
 }
 
 

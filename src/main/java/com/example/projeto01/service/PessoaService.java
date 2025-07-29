@@ -6,6 +6,9 @@ import com.example.projeto01.model.Pessoa;
 import com.example.projeto01.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class PessoaService {
 
@@ -22,9 +25,15 @@ public class PessoaService {
 
      Pessoa salvaPessoa = pessoaRepository.save(pessoa);
      return new PessoaResponse(salvaPessoa.getId(),salvaPessoa.getNome(), salvaPessoa.getIdade());
-
     }
 
+    public List<PessoaResponse> listar() {
+        List<Pessoa> pessoas = pessoaRepository.findAll();
+
+        return pessoas.stream()
+                .map(p -> new PessoaResponse(p.getId(),p.getNome(),p.getIdade()))
+                .collect(Collectors.toList());
+    }
 
 
 }
