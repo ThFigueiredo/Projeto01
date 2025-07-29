@@ -29,7 +29,6 @@ public class PessoaController {
         List<PessoaResponse> pessoas = pessoaService.listar();
         return ResponseEntity.ok(pessoas);
     }
-
 }
 
 
