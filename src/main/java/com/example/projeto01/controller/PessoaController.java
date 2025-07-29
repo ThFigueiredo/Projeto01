@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping("/pessoa")
 public class PessoaController {
 
     private final PessoaService pessoaService;
@@ -20,9 +20,11 @@ public class PessoaController {
         this.pessoaService = pessoaService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<PessoaResponse> salvarPessoa(@RequestBody PessoaRequest pessoaRequest) {
         PessoaResponse pessoa = pessoaService.salvar(pessoaRequest);
         return ResponseEntity.ok(pessoa);
     }
 }
+
+
