@@ -24,7 +24,7 @@ public class PessoaController {
         PessoaResponse pessoa = pessoaService.salvar(pessoaRequest);
         return ResponseEntity.ok(pessoa);
     }
-    @PostMapping("/lista")
+    @GetMapping("/lista")
     public ResponseEntity<List<PessoaResponse>> listarPessoa() {
         List<PessoaResponse> pessoas = pessoaService.listar();
         return ResponseEntity.ok(pessoas);
