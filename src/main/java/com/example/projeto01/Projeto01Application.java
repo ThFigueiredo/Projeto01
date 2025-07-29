@@ -1,5 +1,6 @@
 package com.example.projeto01;
 
+import com.example.projeto01.model.Pessoa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
