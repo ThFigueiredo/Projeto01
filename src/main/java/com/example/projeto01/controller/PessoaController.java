@@ -25,7 +25,4 @@ public class PessoaController {
         Pessoa pessoa = pessoaService.salvar(pessoaRequest);
         return ResponseEntity.ok(pessoa);
     }
-
-
-
 }
