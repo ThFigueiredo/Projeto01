@@ -24,10 +24,16 @@ public class PessoaController {
         PessoaResponse pessoa = pessoaService.salvar(pessoaRequest);
         return ResponseEntity.ok(pessoa);
     }
-    @GetMapping("/lista")
+    @GetMapping("/list")
     public ResponseEntity<List<PessoaResponse>> listarPessoa() {
         List<PessoaResponse> pessoas = pessoaService.listar();
         return ResponseEntity.ok(pessoas);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletar(@PathVariable Long id) {
+        String mensagem = pessoaService.deletar(id);
+        return ResponseEntity.ok(mensagem);
     }
 }
 

@@ -19,20 +19,29 @@ public class PessoaService {
     }
 
     public PessoaResponse salvar(PessoaRequest pessoaRequest) {
-     Pessoa pessoa = new Pessoa();
-     pessoa.setNome(pessoaRequest.getNome());
-     pessoa.setIdade(pessoaRequest.getIdade());
+        Pessoa pessoa = new Pessoa();
+        pessoa.setNome(pessoaRequest.getNome());
+        pessoa.setIdade(pessoaRequest.getIdade());
 
-     Pessoa salvaPessoa = pessoaRepository.save(pessoa);
-     return new PessoaResponse(salvaPessoa.getId(),salvaPessoa.getNome(), salvaPessoa.getIdade());
+        Pessoa salvaPessoa = pessoaRepository.save(pessoa);
+        return new PessoaResponse(salvaPessoa.getId(), salvaPessoa.getNome(), salvaPessoa.getIdade());
     }
 
     public List<PessoaResponse> listar() {
         List<Pessoa> pessoas = pessoaRepository.findAll();
 
         return pessoas.stream()
-                .map(p -> new PessoaResponse(p.getId(),p.getNome(),p.getIdade()))
+                .map(p -> new PessoaResponse(p.getId(), p.getNome(), p.getIdade()))
                 .collect(Collectors.toList());
+    }
+
+    public String deletar(Long id) {
+        if (!pessoaRepository.existsById(id)) {
+            throw new RuntimeException("Pessoa com ID " + id + " não encontrada.");
+        }
+
+        pessoaRepository.deleteById(id);
+        return "Pessoa com o ID " + id + " foi deletada com sucesso!";
     }
 
 
