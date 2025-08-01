@@ -43,6 +43,20 @@ public class PessoaService {
         pessoaRepository.deleteById(id);
         return "Pessoa com o ID " + id + " foi deletada com sucesso!";
     }
+    public String atualizar(Long id, PessoaRequest request) {
+        Pessoa pessoa = pessoaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pessoa com ID " + id + " não encontrada."));
+
+        pessoa.setNome(request.getNome());
+        pessoa.setIdade(request.getIdade());
+
+        pessoaRepository.save(pessoa);
+
+        return "Pessoa com o ID " + id + " foi atualizada com sucesso!";
+    }
+
+
+
 
 
 }

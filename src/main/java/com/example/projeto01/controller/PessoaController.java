@@ -4,6 +4,7 @@ package com.example.projeto01.controller;
 import com.example.projeto01.DTO.PessoaRequest;
 import com.example.projeto01.DTO.PessoaResponse;
 import com.example.projeto01.service.PessoaService;
+import jakarta.persistence.PostUpdate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,12 @@ public class PessoaController {
     public ResponseEntity<String> deletar(@PathVariable Long id) {
         String mensagem = pessoaService.deletar(id);
         return ResponseEntity.ok(mensagem);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> atualizar(@PathVariable Long id, @RequestBody PessoaRequest request) {
+        String mensagem = pessoaService.atualizar(id, request);
+        return ResponseEntity.ok(mensagem); // HTTP 200 OK + mensagem
     }
 }
 
